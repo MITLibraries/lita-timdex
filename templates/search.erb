@@ -1,0 +1,12 @@
+Searching for "<%= @data['needle'] %>"
+
+<%= @data['response']['hits'] %> response(s) indicated
+<%= @data['response']['records'].length %> results returned. The first five are:
+
+<% @data['response']['records'].first(5).each do |items| %>
+<%= items.title %>
+
+  ID: <%= items.id %>
+  <%= items.source_link %>
+
+<% end %>
