@@ -7,6 +7,8 @@ module Lita
 
       route(/^echo\s+(.+)/, :echo)
 
+      route(/^search\s+(.+)/, :search, help: { "search" => "Searches Timedex for the provided string of text"})
+
       def ping(response)
         # Timdex no longer requires auth and will continue on just fine with
         # bad auth. The gem for now doesn't understand that so you need to
@@ -20,6 +22,17 @@ module Lita
 
       def echo(response)
         response.reply(response.matches)
+      end
+
+      def search(response)
+        # This parses the submitted string, and sends it over to the Timdex gem's
+        # search method.
+        output = {}
+        output['needle'] = response.matches[0][0]
+
+        output['response'] = Timdex.new('FAKE_FOR_NOW', 'IT_WILL_WORK_ANYWAY').search(output['needle'])
+
+        response.reply(render_template('search', data: output))
       end
 
       Lita.register_handler(self)
