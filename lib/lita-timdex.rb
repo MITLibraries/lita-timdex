@@ -4,9 +4,10 @@ Lita.load_locales Dir[File.expand_path(
   File.join("..", "..", "locales", "*.yml"), __FILE__
 )]
 
-require "lita/handlers/timdex"
+require "lita/handlers/timdex_handler"
+require 'timdex'
 
-Lita::Handlers::Timdex.template_root File.expand_path(
+Lita::Handlers::TimdexHandler.template_root File.expand_path(
   File.join("..", "..", "templates"),
  __FILE__
 )
