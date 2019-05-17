@@ -3,7 +3,7 @@ module Lita
     class TimdexHandler < Handler
       # insert handler code here
 
-      route(/^ping/, :ping, help: { "ping" => "Checks TIMDEX!" })
+      route(/^ping/, :ping, command: true, help: { "ping" => "Checks TIMDEX!" })
 
       route(/^search\s+(.+)/, :search, command: true, help: { "search" => "Searches TIMDEX! for the provided string of text"})
 
