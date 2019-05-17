@@ -14,4 +14,13 @@ describe Lita::Handlers::TimdexHandler, lita_handler: true do
     send_message('lita echo can you hear me now?')
     expect(replies.last).to eq('can you hear me now?')
   end
+
+  it { is_expected.to route('lita search popcorn').to(:search) }
+
+  it 'can search stuff' do
+    send_message('lita search popcorn')
+    expect(replies.last).to include('Searching for "popcorn"')
+    expect(replies.last).to include('response(s) indicated')
+    expect(replies.last).to include('ID:')
+  end
 end
