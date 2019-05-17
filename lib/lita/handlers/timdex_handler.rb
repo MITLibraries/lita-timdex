@@ -5,8 +5,6 @@ module Lita
 
       route(/^ping/, :ping, help: { "ping" => "Checks TIMDEX!" })
 
-      route(/^echo\s+(.+)/, :echo)
-
       route(/^search\s+(.+)/, :search, command: true, help: { "search" => "Searches TIMDEX! for the provided string of text"})
 
       def ping(response)
@@ -18,10 +16,6 @@ module Lita
         pong = Timdex.new('FAKE_FOR_NOW', 'IT_WILL_WORK_ANYWAY').ping
 
         response.reply(render_template('ping', data: pong))
-      end
-
-      def echo(response)
-        response.reply(response.matches)
       end
 
       def search(response)

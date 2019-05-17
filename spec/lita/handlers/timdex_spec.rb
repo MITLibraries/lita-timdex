@@ -8,13 +8,6 @@ describe Lita::Handlers::TimdexHandler, lita_handler: true do
     expect(replies.last).to eq('pong')
   end
 
-  it { is_expected.to route('lita echo popcorn').to(:echo) }
-
-  it 'can echo stuff' do
-    send_message('lita echo can you hear me now?')
-    expect(replies.last).to eq('can you hear me now?')
-  end
-
   it { is_expected.to route('lita search popcorn').to(:search) }
 
   it 'can search stuff' do
