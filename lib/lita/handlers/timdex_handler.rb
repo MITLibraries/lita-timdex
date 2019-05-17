@@ -7,7 +7,7 @@ module Lita
 
       route(/^echo\s+(.+)/, :echo)
 
-      route(/^search\s+(.+)/, :search, help: { "search" => "Searches TIMDEX! for the provided string of text"})
+      route(/^search\s+(.+)/, :search, command: true, help: { "search" => "Searches TIMDEX! for the provided string of text"})
 
       def ping(response)
         # Timdex no longer requires auth and will continue on just fine with
