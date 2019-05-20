@@ -14,9 +14,8 @@ describe Lita::Handlers::TimdexHandler, lita_handler: true do
 
   it 'can search stuff' do
     send_message('lita search popcorn')
-    expect(replies.last).to include('Searching for "popcorn"')
-    expect(replies.last).to include('response(s) indicated')
-    expect(replies.last).to include('ID:')
+    expect(replies.last).to include('total result(s) for "popcorn"')
+    expect(replies.last).to include('https://library.mit.edu/item/')
   end
 
   it { is_expected.not_to route('search popcorn').to(:search) }
